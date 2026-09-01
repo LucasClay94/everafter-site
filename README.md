@@ -65,7 +65,9 @@ If you change the legal text here before that lands, change it in both places.
 
 ## Custom domain
 
-`CNAME.pending` holds the custom domain. It is renamed to `CNAME` and committed
-only **after** the Hover DNS records point at GitHub Pages — committing it early
-makes Pages redirect the working `*.github.io` URL to a domain that does not yet
-resolve, which looks like the site is down.
+`CNAME` pins the site to **thisiseverafter.com**. GitHub Pages reads this file
+on every build; deleting it detaches the domain and the site falls back to
+`lucasclay94.github.io/everafter-site/`.
+
+DNS lives at Hover: four `A` records on the apex pointing at GitHub Pages
+(185.199.108-111.153) and a `www` CNAME to `lucasclay94.github.io`.
