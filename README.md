@@ -62,3 +62,10 @@ confirmed live (redirecting to a dead domain would break the legal links for
 existing users and the App Store listing). Tracked in the app repo.
 
 If you change the legal text here before that lands, change it in both places.
+
+## Custom domain
+
+`CNAME.pending` holds the custom domain. It is renamed to `CNAME` and committed
+only **after** the Hover DNS records point at GitHub Pages — committing it early
+makes Pages redirect the working `*.github.io` URL to a domain that does not yet
+resolve, which looks like the site is down.
