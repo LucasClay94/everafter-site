@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Get Ever After</title>
+    <meta
+      name="description"
+      content="Download Ever After for iPhone or Android."
+    />
+    <!-- A redirect page, not a destination: keep it out of search results. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://thisiseverafter.com/get" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ever After" />
+    <meta property="og:title" content="Get Ever After" />
+    <meta
+      property="og:description"
+      content="Rate what you watch, keep a watchlist, and see what your friends really thought."
+    />
+    <meta property="og:url" content="https://thisiseverafter.com/get" />
+    <meta property="og:image" content="https://thisiseverafter.com/assets/og-image.png" />
+    <meta name="theme-color" content="#161310" />
+
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+
+    <!--
+      Smart link (pickfair#536). The invite SMS the app sends points here, so one
+      URL serves every phone: Android goes to Google Play, iPhone/iPad to the
+      App Store, and anything else (desktop, an unknown user agent, JavaScript
+      off) sees the two buttons below and picks.
+
+      Runs before any rendering so the redirect is effectively instant.
+      `location.replace` keeps this page out of the back-button history.
+
+      ANDROID_LIVE: flip to true the day the Play listing is public. Until then
+      an Android phone would land on a Play "item not found" page, so it sees
+      the buttons with a "coming soon" note instead. No app release needed to
+      flip it — this file is the only switch.
+    -->
+    <script>
+      (function () {
+        var ANDROID_LIVE = false;
+        var APP_STORE = "https://apps.apple.com/app/id6759132019";
+        var PLAY_STORE =
+          "https://play.google.com/store/apps/details?id=com.thisiseverafter.app";
+        var ua = navigator.userAgent || "";
+        var isAndroid = /android/i.test(ua);
+        // iPadOS 13+ reports as a Mac; touch points tell it apart.
+        var isIOS =
+          /iphone|ipad|ipod/i.test(ua) ||
+          (/macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+        if (isAndroid && ANDROID_LIVE) {
+          location.replace(PLAY_STORE);
+        } else if (isIOS) {
+          location.replace(APP_STORE);
+        } else if (isAndroid) {
+          document.documentElement.setAttribute("data-android-soon", "");
+        }
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Jost:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <style>
+      /* Only the Android-before-launch case shows the note. */
+      .android-soon { display: none; }
+      [data-android-soon] .android-soon { display: block; }
+      [data-android-soon] .play-cta { display: none; }
+    </style>
+  </head>
+  <body>
+    <main class="hero">
+      <a href="../" aria-label="Ever After — home">
+        <img
+          class="wordmark"
+          src="../assets/ever-after-logo.png"
+          width="411"
+          height="84"
+          alt="Ever After"
+          fetchpriority="high"
+        />
+      </a>
+
+      <h1 class="tagline">Movies, with the people you actually know.</h1>
+      <p class="subhead">
+        Rate what you watch, keep a watchlist, and see what your friends really
+        thought.
+      </p>
+
+      <div class="cta-group">
+        <div class="cta-buttons">
+          <a class="btn btn-primary" href="https://apps.apple.com/app/id6759132019">
+            <svg class="apple" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+                <path
+                  d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
+                />
+              </svg>
+            Download on the App Store
+          </a>
+          <a
+            class="btn btn-primary play-cta"
+            href="https://play.google.com/store/apps/details?id=com.thisiseverafter.app"
+          >
+            <svg class="play" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4.2 2.4a1 1 0 0 0-.7 1v17.2a1 1 0 0 0 1.5.9l15.4-8.6a1 1 0 0 0 0-1.8L5 2.5a1 1 0 0 0-.8-.1z" />
+            </svg>
+            Get it on Google Play
+          </a>
+        </div>
+        <p class="cta-note">Free on iPhone and Android</p>
+        <p class="cta-note android-soon">
+          Ever After for Android is days away. Check back soon, or grab it on an
+          iPhone in the meantime.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

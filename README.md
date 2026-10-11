@@ -16,6 +16,7 @@ index.html          Hero + App Store CTA, what-it-is, contact
 privacy/index.html  Privacy Policy      -> /privacy
 terms/index.html    Terms of Service    -> /terms
 support/index.html  Support + FAQ       -> /support
+get/index.html      Smart download link -> /get (Android -> Play, iOS -> App Store, else both buttons; pickfair#536)
 404.html            Not-found page
 assets/styles.css   Shared stylesheet (design tokens mirror the app)
 assets/             Wordmark, favicons, Open Graph card
